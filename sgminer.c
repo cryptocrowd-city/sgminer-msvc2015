@@ -6753,7 +6753,7 @@ static void gen_stratum_work(struct pool *pool, struct work *work)
     temp += 8;
 
     for (j = 0; i < temp; ++i, ++j) {
-      ((uint32_t *)work->data)[i] = le32toh(((uint32_t *)merkle_root)[j]);
+      ((uint32_t *)work->data)[i] = swab32(le32toh(((uint32_t *)merkle_root)[j]));
     }
 
     /* Add the time encoded in big endianess. */
